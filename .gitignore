@@ -1,3 +1,5 @@
 /venv/
 .gitignore
 .idea/
+/imgs/
+/output/
