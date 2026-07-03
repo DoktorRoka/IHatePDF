@@ -9,7 +9,10 @@ def create_pdf(input_files):
 
     # files need to be processed from a folder without writing their exact names
     for i in os.listdir(input_files):
-        temp_list.append(input_files + i)
+        if i.endswith(".png") or i.endswith(".jpg"):
+            temp_list.append(input_files + i)
+        else:
+            continue
 
 
     with open("output/output.pdf", "wb") as f:
