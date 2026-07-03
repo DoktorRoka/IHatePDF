@@ -1,5 +1,6 @@
 import os
 import img2pdf
+from pdf2docx import Converter
 
 input_files = "imgs/"
 
@@ -14,9 +15,10 @@ def create_pdf(input_files):
         else:
             continue
 
-
     with open("output/output.pdf", "wb") as f:
         f.write(img2pdf.convert(temp_list))
 
 
-create_pdf(input_files)
+def noOCR_pdf(input_pdf):
+    cv = Converter(input_pdf)
+    cv.convert("output/output.docx")
