@@ -14,7 +14,7 @@ parser_create.add_argument("output", "Name and path where to output pdf. Ex.: re
 
 # convert_pdf
 
-parser_create = subparsers.add_parser("create", help="Convert PDF file to DOCX")
+parser_create = subparsers.add_parser("convert", help="Convert PDF file to DOCX")
 parser_create.add_argument("input", "Path to a picture/a folder with a pdf file")
 parser_create.add_argument("output", "Name and path where to output docx. Ex.: result.docx or output/result.docx")
 
