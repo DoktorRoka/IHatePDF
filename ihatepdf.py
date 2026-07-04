@@ -26,16 +26,6 @@ parser_convert.add_argument(
     help="Name and path where to output docx. Ex.: result.docx or output/result.docx",
 )
 
-# ocr_pdf
-
-parser_convert = subparsers.add_parser("ocr", help="Convert PDF file to DOCX with OCR")
-parser_convert.add_argument("input", help="Path to a pdf file")
-parser_convert.add_argument(
-    "output",
-    help="Name and path where to output docx. Ex.: result.docx or output/result.docx",
-)
-
-
 if __name__ == "__main__":
     args = parser.parse_args()
 
@@ -49,9 +39,4 @@ if __name__ == "__main__":
     elif args.command == "convert":
         print("Converting into docx...")
         ihatepdf.convert_pdf()
-        print("Done.")
-
-    elif args.command == "ocr":
-        print("Converting into docx with ocr...")
-        ihatepdf.OCR_convert_pdf()
         print("Done.")
