@@ -1,6 +1,9 @@
 import os
 import img2pdf
 from pdf2docx import Converter
+import pytesseract
+from pdf2image import convert_from_path
+from docx import Document
 
 
 class PDF:
@@ -34,3 +37,26 @@ class PDF:
         cv = Converter(self.input_path)
         cv.convert(self.output)
         cv.close()
+
+    def OCR_convert_pdf(self):
+        pytesseract.pytesseract.tesseract_cmd = (
+            r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+        )
+
+        poppler_path = r"C:\poppler\poppler-26.02.0\Library\bin"
+
+        images = convert_from_path(self.input_path, poppler_path=poppler_path)
+
+        # print(pytesseract.get_languages(config=''))
+
+        doc = Document()
+
+        for image in images:
+            # print(pytesseract.image_to_string(image, lang='rus+equ+osd'))
+
+            output_text = pytesseract.image_to_string(image, lang="rus")
+
+            doc.add_paragraph(output_text)
+
+
+        doc.save(self.output)
