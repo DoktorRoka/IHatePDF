@@ -58,5 +58,4 @@ class PDF:
 
             doc.add_paragraph(output_text)
 
-
         doc.save(self.output)
