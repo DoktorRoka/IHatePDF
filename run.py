@@ -26,10 +26,8 @@ async def command_start_handler(message: Message) -> None:
 async def all_message(message: Message) -> None:
     await message.answer("Отошлите фотки для конвертации в ПДФ файл. ")
 
-@dp.message()
 
 
-# Run the bot
 async def main() -> None:
     bot = Bot(token=TOKEN)
     await dp.start_polling(bot)
