@@ -2,9 +2,11 @@ import os
 import asyncio
 from dotenv import load_dotenv
 
-from aiogram import Bot, Dispatcher
+from aiogram import Bot, Dispatcher, Router, F, types
 from aiogram.filters import Command
 from aiogram.types import Message
+
+import pdf_functions
 
 load_dotenv()
 
@@ -13,10 +15,18 @@ TOKEN = os.getenv("KEY")
 dp = Dispatcher()
 
 
+router = Router()
+
 # Command handler
 @dp.message(Command("start"))
 async def command_start_handler(message: Message) -> None:
     await message.answer("Отошлите фотки для конвертации в ПДФ файл. ")
+
+@dp.message(F.text)
+async def all_message(message: Message) -> None:
+    await message.answer("Отошлите фотки для конвертации в ПДФ файл. ")
+
+@dp.message()
 
 
 # Run the bot
