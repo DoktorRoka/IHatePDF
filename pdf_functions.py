@@ -33,6 +33,14 @@ class PDF:
         with open(self.output, "wb") as f:
             f.write(img2pdf.convert(temp_list))
 
+
+    def create_from_memory(self, images_bytes_list):
+        if not images_bytes_list:
+            return None
+
+        pdf_bytes = img2pdf.convert(images_bytes_list)
+        return pdf_bytes
+
     def convert_pdf(self):
         cv = Converter(self.input_path)
         cv.convert(self.output)
