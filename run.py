@@ -186,12 +186,12 @@ async def process_filename(message: Message, state: FSMContext):
     if not filename.lower().endswith(".pdf"):
         filename += ".pdf"
 
-    await message.answer(f"Сборка файла '{filename}' в памяти...")
+    await message.answer(f"Сборка файла '{filename}'...")
 
     data = await state.get_data()
     photos = data.get("photos", [])
 
-    pdf_tool = PDF("", "")
+    pdf_tool = PDF()
     try:
         pdf_bytes = pdf_tool.create_pdf_from_memory(photos)
         if pdf_bytes:
